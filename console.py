@@ -1,4 +1,4 @@
-import import pdb
+import pdb
 from models.member import Member 
 from models.activity import Activity 
 from models.booking import Booking  
@@ -33,3 +33,17 @@ booking_2 = Booking(ciri, sword)
 booking_3 = Booking(yennefer, spells)
 booking_4 = Booking(tris, spells)
 booking_5 = Booking(ciri, spells)
+
+booking_repository.save(booking_1)
+booking_repository.save(booking_2)
+booking_repository.save(booking_3)
+booking_repository.save(booking_4)
+booking_repository.save(booking_5)
+
+for member in member_repository.select_all():
+    print(member.__dict__)
+for activity in activity_repository.select_all():
+    print(activity.__dict__)
+for booking in booking_repository.select_all():
+    print(booking.__dict__)
+    

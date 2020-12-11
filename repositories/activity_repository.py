@@ -6,7 +6,8 @@ def save(activity):
     sql = "INSERT INTO activities (name) VALUES (%s) RETURNING id"
     values = [activity.name]
     results = run_sql(sql, values)
-    activity.id = results[0]['id']
+    id = results[0]['id']
+    activity.id = id
     return activity
 
 def select_all():
@@ -33,3 +34,4 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM activities"
     run_sql(sql)
+
