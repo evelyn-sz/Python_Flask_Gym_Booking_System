@@ -1,7 +1,7 @@
 class Activity:
 
-    def __init__(self, name, category, date, id = None):
+    def __init__(self, name, category, finished = False, id = None):
         self.name = name
         self.category = category
-        self.date = date
+        self.finished = finished
         self.id = id

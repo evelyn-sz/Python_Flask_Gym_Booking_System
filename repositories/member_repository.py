@@ -3,8 +3,8 @@ from models.activity import Activity
 from models.member import Member
 
 def save(member):
-    sql = "INSERT INTO members (name) VALUES (%s) RETURNING id"
-    values = [member.name]
+    sql = "INSERT INTO members (first_name, last_name) VALUES (%s) RETURNING id"
+    values = [member.first_name, member.last_name]
     results = run_sql(sql, values)
     member.id = results[0]['id']
     return member
@@ -16,7 +16,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        member = Member(row['name'], row['id'])
+        member = Member(row['first_name'], row['last_name'], row['id'])
         members.append(member)
     return members
 
@@ -27,11 +27,10 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        member = Member(result['name'], result ['id'])
+        member = Member(result['first_name'], result['last_name'], result ['id'])
     return member
 
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)
 
-    
