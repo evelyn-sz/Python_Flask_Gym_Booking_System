@@ -6,5 +6,5 @@ class TestMember(unittest.TestCase):
         self.member = Member("Geralt", "of Rivia")
 
     def test_member_has_full_name(self):
-        self.assertEqual("Geralt of Rivia", self.activity.member.full_name())
+        self.assertEqual("Geralt of Rivia", self.member.full_name())
 
