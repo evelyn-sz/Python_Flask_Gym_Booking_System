@@ -5,18 +5,16 @@
 
 <form action="/bookings" method="post">
     <label for="member">Select Member:</label>
-        <select name="member_id" id="member">
-            {% for member in members %}
-            <option value="{{ member.id }}">{{ member.full_name() }}</option>
-            {% endfor %}
-        </select>
+    <select name="member_id" id="member">
+        {% for member in members %}
+        <option value="{{ member.id }}">{{ member.full_name() }}</option>
+        {% endfor %}
+    </select>
     
     <label for="activity">Choose activity:</label>
-        <select name="activity_id" id="activity">
-            {% for activity in activities %}
-            <option value="{{ activity.id }}">{{ activity.name }}</option>
-            {% endfor %}
-        </select>
-    
-
+    <select name="activity_id" id="activity">
+        {% for activity in activities %}
+        <option value="{{ activity.id }}">{{ activity.name }}</option>
+        {% endfor %}
+    </select>
 </form>
