@@ -21,3 +21,10 @@ def show(id):
 def new_member():
     return render_template("/members/new.html")
 
+@members_blueprint.route("/members", methods=["POST"])
+def create_member():
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    new_member = Member(first_name, last_name)
+    member_repository.save(new_member)
+    return redirect("/members")

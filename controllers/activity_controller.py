@@ -19,3 +19,13 @@ def show(id):
 @activities_blueprint.route("/activities/new")
 def new_activity():
     return render_template("activities/new.html")
+
+@activities_blueprint.route("activities", methods=["POST"])
+def create_activity():
+    name = request.form["name"]
+    venue = request.form["venue"]
+    category = request.form["category"]
+    finished = request.form["finished"]
+    new_activity = Activity(name, venue, category, finished)
+    activity_repository.save(new_activity)
+    return redirect("/activities")
