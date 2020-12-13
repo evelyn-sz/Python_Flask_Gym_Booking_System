@@ -16,3 +16,6 @@ def show(id):
     members = activity_repository.members(activity)
     return render_template("activities/show.html", activity = activity, members = members)
 
+@activities_blueprint.route("/activities/new")
+def new_activity():
+    return render_template("activities/new.html")

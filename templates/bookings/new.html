@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
-{% block content %}
+{% block add_new %}
 <h1>Add a Booking</h1>
 
 <form action="/bookings" method="post">
@@ -18,4 +18,4 @@
         {% endfor %}
     </select>
 </form>
-{% enblock %}
+{% endblock %}
