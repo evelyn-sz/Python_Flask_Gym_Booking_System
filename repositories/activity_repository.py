@@ -3,8 +3,8 @@ from models.activity import Activity
 from models.member import Member
 
 def save(activity):
-    sql = "INSERT INTO activities (name, category, finished) VALUES (%s, %s, %s) RETURNING id"
-    values = [activity.name, activity.category, activity.finished]
+    sql = "INSERT INTO activities (name, venue, category, finished) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [activity.name, activity.venue, activity.category, activity.finished]
     results = run_sql(sql, values)
     id = results[0]['id']
     activity.id = id
@@ -17,7 +17,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        activity = Activity(row['name'], row['category'], row['finished'], row['id'])
+        activity = Activity(row['name'], row['venue'], row['category'], row['finished'], row['id'])
         activities.append(activity)
     return activities
 
@@ -28,7 +28,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        activity = Activity(result['name'], result['category'], result['finished'], result['id'])
+        activity = Activity(result['name'], result['venue'], result['category'], result['finished'], result['id'])
     return activity
 
 def delete_all():

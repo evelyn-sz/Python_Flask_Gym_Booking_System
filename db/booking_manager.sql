@@ -11,6 +11,7 @@ CREATE TABLE members (
 CREATE TABLE activities (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
+    venue VARCHAR(255),
     category VARCHAR(255),
     finished BOOLEAN
 );

@@ -5,10 +5,12 @@
 
 {% for booking in bookings %}
     <section>
-        <p>{{ booking.member.full_name() }} - {{ booking.activity.name }} {{ booking.activity.category }}</p>
-        <a href="/bookings/{{ booking.id }}/edit">Edit</a>
+        <p>{{ booking.member.full_name() }} - {{ booking.activity.name }},  {{ booking.activity.category }}</p>
+        <p>Venue: {{ booking.activity.venue }}</p>
+        <form action="/bookings/{{ booking.id }}/edit" method="POST">
+            <input type="submit" value="Edit"/>
         <form action="/bookings/{{ booking.id }}/delete" method="POST">
-            <input class="btn btn--danger" type="submit" value="delete"/>
+            <input class="btn btn--danger" type="submit" value="Delete"/>
         </form>
     </section>  
 {% endfor %}

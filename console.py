@@ -20,9 +20,9 @@ member_repository.save(ciri)
 member_repository.save(yennefer)
 member_repository.save(tris)
 
-emotions = Activity("Emotions Yoga", "hollistic", False)
-sword = Activity("Sword Fighting", "essentials", False)
-spells = Activity("Spells", "magic", False)
+emotions = Activity("Emotions Yoga", "Djinn's Bottle", "hollistic", False)
+sword = Activity("Sword Fighting", "Kaer Morhen", "essentials", False)
+spells = Activity("Spells", "Aretuza", "magic", False)
 
 activity_repository.save(emotions)
 activity_repository.save(sword)

@@ -42,6 +42,6 @@ def activities(member):
     results = run_sql(sql, values)
 
     for row in results:
-        activity = Activity(row['name'], row['category'], row['finished'], row['id'])
+        activity = Activity(row['name'], row['venue'], row['category'], row['finished'], row['id'])
         activities.append(activity)
     return activities

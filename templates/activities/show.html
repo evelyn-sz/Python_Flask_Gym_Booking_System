@@ -4,11 +4,12 @@
 <h1>  {{ activity.name }} </h1>
 
 <p>Category: {{ activity.category }}</p>
+<p>Venue: {{ activity.venue }}</p>
 
 <h3>Members signed up for this activity:</h3>
 <ul>
     {% for member in members %}
-    <li> {{ member.name }}</li>
+    <li> {{ member.full_name() }}</li>
     {% endfor %}
 </ul>
 

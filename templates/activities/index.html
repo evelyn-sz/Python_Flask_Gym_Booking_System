@@ -8,12 +8,16 @@
         <th>Name</th>
         <th></th>
         <th>Category</th>
+        <th></th>
+        <th>Venue</th>
     </tr>
     {% for activity in activities %}
     <tr>
         <td><a href="/activities/{{ activity.id }}"> {{ activity.name }} </a></td>
         <td>|</td>
         <td>{{ activity.category }}</td>
+        <td>|</td>
+        <td>{{ activity.venue }}</td>
     </tr>
     {% endfor %}
 </table>
