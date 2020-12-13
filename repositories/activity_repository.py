@@ -45,4 +45,3 @@ def members(activity):
         member = Member(row['first_name'], row['last_name'], row['id'])
         members.append(member)
     return members
-    
