@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Activities</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th></th>
+        <th>Category</th>
+    </tr>
+    {% for activity in activities %}
+    <tr>
+        <td><a href="/activities/{{ activity.id }}"> {{ activity.name }} </a></td>
+        <td>|</td>
+        <td>{{ activity.category }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
