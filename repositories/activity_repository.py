@@ -3,8 +3,8 @@ from models.activity import Activity
 from models.member import Member
 
 def save(activity):
-    sql = "INSERT INTO activities (name) VALUES (%s) RETURNING id"
-    values = [activity.name]
+    sql = "INSERT INTO activities (name, category, finished) VALUES (%s, %s, %s) RETURNING id"
+    values = [activity.name, activity.category, activity.finished]
     results = run_sql(sql, values)
     id = results[0]['id']
     activity.id = id
