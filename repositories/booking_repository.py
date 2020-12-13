@@ -45,7 +45,9 @@ def delete(id):
     run_sql(sql, values)
 
 def update(booking):
-    pass
+    sql = "UPDATE bookings SET (member_id, activity_id) = (%s, %s) WHERE id = %s"
+    values = [booking.member.id, booking.activity.id, bookind.id]
+    run_sql(sql, values)
 
 def member(booking):
     sql = "SELECT * FROM members WHERE id = %s"

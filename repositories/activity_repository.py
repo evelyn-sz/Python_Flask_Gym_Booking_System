@@ -40,6 +40,11 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def update(activity):
+    sql = "UPDATE activities SET (name, venue, category, finished) = (%s, %s, %s, %s) WHERE is = %s"
+    values = [activity.name, activity.venue, activity.category, activity.finished, activity.id]
+    run_sql(sql, values)
+
 def members(activity):
     members = []
     sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.activity_id = %s"
