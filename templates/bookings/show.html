@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> All Bookings </h1>
+
+<ul>
+    {% for booking in bookings %}
+    <li> {{booking.member.full_name() }} - {{ booking.activity.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

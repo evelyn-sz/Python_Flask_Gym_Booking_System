@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Bookings</h1>
+<h2>Bookings</h2>
 
-<p class="btn--wrapper">
-    <a class="btn--action" href="/bookings/new">New booking</a>
-</p>
-<ul>
-    {% for booking in bookings %}
-    <li>
-        <p>{{ booking.member.first_name }} - {{booking.activity.name }}, {{ booking.activity.category }}</p>
-        <p>
-            <form action="/bookings/{{ booking.id }}/delete" method="POST">
+{% for booking in bookings %}
+    <section>
+        <p>{{ booking.member.full_name() }} - {{ booking.activity.name }} {{ booking.activity.category }}</p>
+        <a href="/bookings/{{ booking.id }}/edit">Edit</a>
+        <form action="/bookings/{{ booking.id }}/delete" method="POST">
             <input class="btn btn--danger" type="submit" value="delete"/>
-            </form>
-        </p>
-    </li>
-    {% endfor %}
-</ul>
+        </form>
+    </section>  
+{% endfor %}
+{% endblock %}

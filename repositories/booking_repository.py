@@ -25,6 +25,15 @@ def select_all():
         bookings.append(booking)
     return bookings
 
+def select(id):
+    sql = "SELECT * FROM bookings WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    member = member_repository.select(result["member_id"])
+    activity = activity_repository.select(result["activity_id"])
+    booking = Booking(member, activity, result["id"])
+    return booking
+
 def delete_all():
     sql = "DELETE FROM bookings"
     run_sql(sql)
@@ -33,3 +42,18 @@ def delete(id):
     sql = "DELETE FROM bookings WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def member(booking):
+    sql = "SELECT * FROM members WHERE id = %s"
+    values = [booking.member.id]
+    results = run_sql(sql, values)[0]
+    member = Member(results['first_name'], results['last_name'], results['id'])
+    return member
+
+def activity(booking):
+    sql = "SELECT * FROM bookings WHERE id = %s"
+    values = [booking.activity.id]
+    results = run_sql(sql, values)[0]
+    activity = Activity(results['name'], results['category'], results['finished'], results['id'])
+    return activity
+    
