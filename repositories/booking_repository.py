@@ -9,7 +9,8 @@ def save(booking):
     sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
     values = (booking.member.id, booking.activity.id)
     results = run_sql(sql, values)
-    booking.id = results[0]['id']
+    id = results[0]['id']
+    booking.id = id
     return booking
 
 def select_all():
@@ -43,6 +44,9 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def update(booking):
+    pass
+
 def member(booking):
     sql = "SELECT * FROM members WHERE id = %s"
     values = [booking.member.id]
@@ -56,4 +60,3 @@ def activity(booking):
     results = run_sql(sql, values)[0]
     activity = Activity(results['name'], results['category'], results['finished'], results['id'])
     return activity
-    
