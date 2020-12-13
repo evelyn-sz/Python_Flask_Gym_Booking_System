@@ -17,4 +17,6 @@ def members():
 #     activities = member_repository.activities(member)
 #     return render_template("members/show.html", member = member, activities = activities)
 
-    
+def new_member():
+    return render_template("/members/new.html")
+
