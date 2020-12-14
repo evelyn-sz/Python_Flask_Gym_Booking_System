@@ -5,8 +5,7 @@
 
 <ul>
     {% for activity in upcoming %}
-    <li> {{ activity.name }} at {{ activity.venue }}</li>
-    <li> {{ activity.category}} {{activity.finished }}</li>
+    <li> {{ activity.name }} at {{ activity.venue }} {{ activity.category}} {{activity.finished }}</li>
     {% endfor %}
 </ul>
 {% endblock %}
