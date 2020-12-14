@@ -18,9 +18,9 @@ def show(id):
 
 @activities_blueprint.route("/activities/new")
 def new_activity():
-    return render_template("activities/new.html")
+    return render_template("/activities/new.html")
 
-@activities_blueprint.route("activities", methods=["POST"])
+@activities_blueprint.route("/activities", methods=["POST"])
 def create_activity():
     name = request.form["name"]
     venue = request.form["venue"]
