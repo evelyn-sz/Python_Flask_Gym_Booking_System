@@ -10,6 +10,8 @@
         <th>Category</th>
         <th></th>
         <th>Venue</th>
+        <th></th>
+        <th>Finished?</th>
     </tr>
     {% for activity in activities %}
     <tr>
@@ -18,7 +20,17 @@
         <td>{{ activity.category }}</td>
         <td>|</td>
         <td>{{ activity.venue }}</td>
-    </tr>
+        <td></td>
+        <td>{{ activity.finished }}</td>
+        <td>
+            <!-- <a href="activities/{{ activity.id }}/edit"></a> -->
+            <form action="activities/{{ activity.id }}/edit">
+                <input type="submit" value="Edit"/>
+            </form>
+            <form action="/activities/{{ activity.id }}/delete" method="POST">
+                <input class="btn btn--danger" type="submit" value="Delete"/>
+            </form>
+        </td>
     {% endfor %}
 </table>
 

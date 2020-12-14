@@ -34,13 +34,3 @@ def create_booking():
     new_booking = Booking(member, activity)
     booking_repository.save(new_booking)
     return redirect("/bookings")
-
-#     # CREATE
-# @zombies_blueprint.route("/zombies", methods=["POST"])
-# def create_zombie():
-#     name = request.form["name"]
-#     zombie_type_id = request.form["zombie_type_id"]
-#     zombie_type = zombie_type_repository.select(zombie_type_id)
-#     new_zombie = Zombie(name, zombie_type)
-#     zombie_repository.save(new_zombie)
-#     return redirect("/zombies")
