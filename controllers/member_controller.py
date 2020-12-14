@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.member import Member
 import repositories.member_repository as member_repository
-import repositories.activity_repository as activity_repository
 
 members_blueprint = Blueprint("members", __name__)
 
@@ -27,4 +26,17 @@ def create_member():
     last_name = request.form["last_name"]
     new_member = Member(first_name, last_name)
     member_repository.save(new_member)
+    return redirect("/members")
+
+@members_blueprint.route("/members/<id>/edit")
+def edit_member(id):
+    member = member_repository.select(id)
+    return render_template('members/edit.html', member=member)
+
+@members_blueprint.route("/members/<id>", methods=["POST"])
+def update_member(id):
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    member = Member(first_name, last_name, id)
+    member_repository.update(member)
     return redirect("/members")

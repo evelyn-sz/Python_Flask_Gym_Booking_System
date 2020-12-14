@@ -10,6 +10,14 @@
     {% for member in members %}
     <tr>
         <td><a href="/members/{{ member.id }}">{{ member.full_name() }} </a></td>
+        <td>
+            <form action="members/{{ member.id }}/edit">
+                <input type="submit" value="Edit"/>
+            </form>
+            <form action="/members/{{ member.id }}/delete" method="POST">
+                <input class="btn btn--danger" type="submit" value="Delete"/>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>

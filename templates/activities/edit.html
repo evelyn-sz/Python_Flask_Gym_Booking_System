@@ -2,22 +2,20 @@
 
 {% block content %}
 
-<h2>Edit activity</h2>
-<h4>Edit {{ activity.name }}</h4>
+<h3>Edit {{ activity.name }}</h3>
 
 <form action="/activities/{{ activity.id }}" method="POST">
     <div>
         <label for="name">Activity Name:</label>
         <input type="text" id="name" name="name" value="{{ activity.name }}">
         <label for="venue">Venue:</label>
-        <input type="text" id="veue" name="venue" value="{{ activity.venue }}">
+        <input type="text" id="venue" name="venue" value="{{ activity.venue }}">
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" value="{{ activity.category }}">
         <label for="finished">Finished?</label>
         <input type="text" id="finished" name="finished" value="{{ activity.finished }}">
         <input type="submit">
     </div>
-
 </form>
 
 {% endblock %}
