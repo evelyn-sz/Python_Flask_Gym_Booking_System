@@ -44,3 +44,8 @@ def update_activity(id):
     activity = Activity(name, venue, category, finished, id)
     activity_repository.update(activity)
     return redirect("/activities")
+
+@activities_blueprint.route("/activities/upcoming")
+def show_upcoming():
+    upcoming = activity_repository.show_upcoming_activities()
+    return render_template("activities/upcoming.html", upcoming=upcoming)

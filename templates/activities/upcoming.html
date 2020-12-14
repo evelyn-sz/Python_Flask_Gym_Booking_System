@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2> Upcoming activities</h2>
+
+<ul>
+    {% for activity in upcoming %}
+    <li> {{ activity.name }} at {{ activity.venue }}</li>
+    <li> {{ activity.category}} {{activity.finished }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

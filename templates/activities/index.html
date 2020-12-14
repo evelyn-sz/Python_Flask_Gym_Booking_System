@@ -7,9 +7,9 @@
     <tr>
         <th>Name</th>
         <th></th>
-        <th>Category</th>
-        <th></th>
         <th>Venue</th>
+        <th></th>
+        <th>Category</th>
         <th></th>
         <th>Finished?</th>
     </tr>
@@ -17,10 +17,10 @@
     <tr>
         <td><a href="/activities/{{ activity.id }}"> {{ activity.name }} </a></td>
         <td>|</td>
+        <td>{{ activity.venue }}</td>
+        <td>|</td>
         <td>{{ activity.category }}</td>
         <td>|</td>
-        <td>{{ activity.venue }}</td>
-        <td></td>
         <td>{{ activity.finished }}</td>
         <td>
             <!-- <a href="activities/{{ activity.id }}/edit"></a> -->
@@ -38,6 +38,11 @@
 <nav>
     <ul>
         <li><a href="activities/new">Add new activity</a></li>
+    </ul>
+</nav>
+<nav>
+    <ul>
+        <li><a href="activities/upcoming">Upcoming activities</a></li>
     </ul>
 </nav>
 {% endblock %}

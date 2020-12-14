@@ -55,3 +55,13 @@ def members(activity):
         member = Member(row['first_name'], row['last_name'], row['id'])
         members.append(member)
     return members
+
+def show_upcoming_activities():
+    upcoming = []
+    sql = "SELECT * FROM activities WHERE finished = False"
+    results = run_sql(sql)
+
+    for row in results:
+        activity = Activity(row['name'], row['venue'], row['category'], row['finished'], row['id'])
+        upcoming.append(activity)
+    return upcoming
