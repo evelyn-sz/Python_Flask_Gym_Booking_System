@@ -11,6 +11,8 @@
         <th></th>
         <th>Category</th>
         <th></th>
+        <th>Capacity</th>
+        <th></th>
         <th>Finished?</th>
     </tr>
     {% for activity in activities %}
@@ -20,6 +22,8 @@
         <td>{{ activity.venue }}</td>
         <td>|</td>
         <td>{{ activity.category }}</td>
+        <td>|</td>
+        <td>{{ activity.capacity }}</td>
         <td>|</td>
         <td>{{ activity.finished }}</td>
         <td>

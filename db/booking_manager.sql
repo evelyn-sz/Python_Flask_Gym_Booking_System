@@ -13,6 +13,7 @@ CREATE TABLE activities (
     name VARCHAR(255),
     venue VARCHAR(255),
     category VARCHAR(255),
+    capacity INT,
     finished BOOLEAN
 );
 
