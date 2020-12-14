@@ -41,6 +41,7 @@ booking_4 = Booking(tris, spells)
 booking_5 = Booking(ciri, spells)
 booking_6 = Booking(striga, claws)
 booking_7 = Booking(renfri, sword)
+booking_8 = Booking(renfri, claws)
 
 
 booking_repository.save(booking_1)
@@ -50,6 +51,7 @@ booking_repository.save(booking_4)
 booking_repository.save(booking_5)
 booking_repository.save(booking_6)
 booking_repository.save(booking_7)
+booking_repository.save(booking_8)
 
 for member in member_repository.select_all():
     print(member.__dict__)

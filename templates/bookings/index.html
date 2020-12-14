@@ -5,7 +5,7 @@
 
 {% for booking in bookings %}
     <section>
-        <p>{{ booking.member.full_name() }} - {{ booking.activity.name }},  {{ booking.activity.category }}</p>
+        <p><a href="/bookings/{{ booking.id }}">{{ booking.member.full_name() }} - {{ booking.activity.name }},  {{ booking.activity.category }}</a></p>
         <p>Venue: {{ booking.activity.venue }}</p>
         <form action="/bookings/{{ booking.id }}/edit" method="POST">
             <input type="submit" value="Edit"/>
