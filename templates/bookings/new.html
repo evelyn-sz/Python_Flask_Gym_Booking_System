@@ -1,9 +1,9 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block add_new %}
+{% block content %}
 <h1>Add a Booking</h1>
 
-<form action="/bookings" method="post">
+<form action="/bookings" method="POST">
     <label for="member">Select Member:</label>
     <select name="member_id" id="member">
         {% for member in members %}
@@ -17,5 +17,8 @@
         <option value="{{ activity.id }}">{{ activity.name }}</option>
         {% endfor %}
     </select>
+    <div>
+        <input type="submit">
+    </div>
 </form>
 {% endblock %}

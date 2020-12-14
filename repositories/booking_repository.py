@@ -4,6 +4,7 @@ from models.member import Member
 from models.booking import Booking 
 import repositories.activity_repository as activity_repository
 import repositories.member_repository as member_repository
+import pdb
 
 def save(booking):
     sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
@@ -30,9 +31,10 @@ def select(id):
     sql = "SELECT * FROM bookings WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    member = member_repository.select(result["member_id"])
-    activity = activity_repository.select(result["activity_id"])
-    booking = Booking(member, activity, result["id"])
+    if result is not None:
+        member = member_repository.select(result["member_id"])
+        activity = activity_repository.select(result["activity_id"])
+        booking = Booking(member, activity, result["id"])
     return booking
 
 def delete_all():
@@ -46,7 +48,7 @@ def delete(id):
 
 def update(booking):
     sql = "UPDATE bookings SET (member_id, activity_id) = (%s, %s) WHERE id = %s"
-    values = [booking.member.id, booking.activity.id, bookind.id]
+    values = [booking.member.id, booking.activity.id, booking.id]
     run_sql(sql, values)
 
 def member(booking):
@@ -57,7 +59,7 @@ def member(booking):
     return member
 
 def activity(booking):
-    sql = "SELECT * FROM bookings WHERE id = %s"
+    sql = "SELECT * FROM activities WHERE id = %s"
     values = [booking.activity.id]
     results = run_sql(sql, values)[0]
     activity = Activity(results['name'], results['venue'], results['category'], results['finished'], results['id'])
