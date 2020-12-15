@@ -6,10 +6,12 @@
 <table>
     <tr>
         <th>Name</th>
+        <th>Membership Type</th>
     </tr>
     {% for member in members %}
     <tr>
         <td><a href="/members/{{ member.id }}">{{ member.full_name() }} </a></td>
+        <td> {{ member.membership_type }} </td>
         <td>
             <form action="members/{{ member.id }}/edit">
                 <input type="submit" value="Edit"/>
@@ -19,7 +21,7 @@
             </form>
         </td>
     </tr>
-    {% endfor %}
+{% endfor %}
 </table>
 
 <nav>

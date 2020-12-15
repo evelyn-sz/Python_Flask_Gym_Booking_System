@@ -3,6 +3,9 @@
 {% block content %}
 <h1> {{ member.full_name() }} </h1>
 
+<h3> Membership Type: </h3>
+<ul> {{ member.membership_type }} </ul>
+
 <h3>Activities signed up for:</h3>
 <ul>
     {% for activity in activities %}
