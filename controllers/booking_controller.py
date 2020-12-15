@@ -16,7 +16,6 @@ def bookings():
 
 @bookings_blueprint.route("/bookings/<id>")
 def show(id):
-    # pdb.set_trace()
     booking = booking_repository.select(id)
     return render_template("bookings/show.html", booking = booking)
 
