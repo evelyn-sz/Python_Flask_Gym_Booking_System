@@ -6,7 +6,7 @@ from models.activity import Activity
 class TestBooking(unittest.TestCase):
 
     def setUp(self):
-        self.member_1 = Member("Geralt", "of Rivia", "premium")
+        self.member_1 = Member("Geralt", "of Rivia", "pro")
         self.activity_1 = Activity("Emotions Yoga", "Djinn's Bottle", "hollistic", 12, False)
         self.booking = Booking(self.member_1, self.activity_1)
 
