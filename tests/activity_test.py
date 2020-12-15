@@ -14,3 +14,6 @@ class TestActivity(unittest.TestCase):
 
     def test_activity_finished_starts_false(self):
         self.assertEqual(False, self.activity.finished)
+
+    def test_activity_has_capacity(self):
+        self.assertEqual(12, self.activity.capacity)
