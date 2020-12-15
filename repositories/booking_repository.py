@@ -14,16 +14,42 @@ import pdb
 #     booking.id = id
 #     return booking
 
+# def save(booking):
+#     if number_of_participants(booking.activity) < booking.activity.capacity:
+#         sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
+#         values = (booking.member.id, booking.activity.id)
+#         results = run_sql(sql, values)
+#         id = results[0]['id']
+#         booking.id = id
+#         return booking
+#     else:
+#         return None
+
 def save(booking):
     if number_of_participants(booking.activity) < booking.activity.capacity:
-        sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
-        values = (booking.member.id, booking.activity.id)
-        results = run_sql(sql, values)
-        id = results[0]['id']
-        booking.id = id
-        return booking
+        if (booking.member.membership_type == "pro") or (booking.member.membership_type == "basic" and booking.activity.offpeak == True):
+            sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
+            values = (booking.member.id, booking.activity.id)
+            results = run_sql(sql, values)
+            id = results[0]['id']
+            booking.id = id
+            return booking
+        else: 
+            return False
     else:
         return None
+
+# if capacity < full
+    #if membership == pro:
+        #sign_up
+    #elif:
+        #membership == basic AND class == offpeak:
+            # sign up
+        #else:
+            # don't sign up
+# else:
+    #return None
+
 
 def select_all():
     bookings = []

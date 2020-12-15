@@ -38,3 +38,10 @@ def create_booking():
     else:
         return render_template("/bookings/full.html")
 
+    # if booking_repository.save(new_booking) is not None:
+    #     if member.membership_type == "pro":
+
+    #     return redirect("/bookings")
+    # else:
+    #     return render_template("/bookings/full.html")
+
