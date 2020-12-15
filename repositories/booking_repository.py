@@ -15,17 +15,15 @@ import pdb
 #     return booking
 
 def save(booking):
-
-    if number_of_participants(booking.activity_id) < booking.activity.capacity:
-
+    if number_of_participants(booking.activity) < booking.activity.capacity:
         sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
         values = (booking.member.id, booking.activity.id)
         results = run_sql(sql, values)
         id = results[0]['id']
         booking.id = id
-    return booking
-
-
+        return booking
+    else:
+        return None
 
 def select_all():
     bookings = []
@@ -78,13 +76,8 @@ def activity(booking):
     activity = Activity(results['name'], results['venue'], results['category'], results['capacity'], results['finished'], results['id'])
     return activity
 
-def number_of_participants(activity_id):
-    participants = []
-    sql = "SELECT * FROM bookings WHERE activity_id = %s"
-    results = run_sql(sql)
-
-    for row in results:
-        booking = Booking(row['member_id'], row['activity_id'], row['id'])
-        participants.append(booking)
-    return len(participants)
-
+def number_of_participants(activity):
+    sql = "SELECT COUNT(*) FROM bookings WHERE activity_id = %s"
+    values = [activity.id]
+    results = run_sql(sql, values)[0]
+    return results["count"]

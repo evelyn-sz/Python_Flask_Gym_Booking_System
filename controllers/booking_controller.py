@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, flash, render_template, request, redirect
 from flask import Blueprint
 from models.booking import Booking
 import repositories.booking_repository as booking_repository
@@ -16,6 +16,7 @@ def bookings():
 
 @bookings_blueprint.route("/bookings/<id>")
 def show(id):
+    # pdb.set_trace()
     booking = booking_repository.select(id)
     return render_template("bookings/show.html", booking = booking)
 
@@ -33,4 +34,8 @@ def create_booking():
     activity = activity_repository.select(activity_id)
     new_booking = Booking(member, activity)
     booking_repository.save(new_booking)
-    return redirect("/bookings")
+    if booking_repository.save(new_booking) is not None:
+        return redirect("/bookings")
+    else:
+        return render_template("/bookings/full.html")
+
