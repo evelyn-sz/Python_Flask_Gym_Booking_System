@@ -33,15 +33,15 @@ def create_booking():
     activity = activity_repository.select(activity_id)
     new_booking = Booking(member, activity)
     booking_repository.save(new_booking)
-    if booking_repository.save(new_booking) is not None:
-        return redirect("/bookings")
-    else:
+    if booking_repository.save(new_booking) == False:
+        return render_template("/bookings/membership_error.html")
+    elif booking_repository.save(new_booking) == None:
         return render_template("/bookings/full.html")
+    elif booking_repository.save(new_booking) is not None:
+        return redirect("/bookings")
+
 
     # if booking_repository.save(new_booking) is not None:
-    #     if member.membership_type == "pro":
-
     #     return redirect("/bookings")
     # else:
     #     return render_template("/bookings/full.html")
-

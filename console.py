@@ -15,7 +15,7 @@ yennefer = Member("Yennefer", "of Vengerberg", "pro")
 geralt = Member("Geralt", "of Rivia", "pro")
 tris = Member("Tris", "Merigold", "basic")
 renfri = Member("Renfri", "of Creyden", "basic")
-striga = Member("Striga", "the Monster", "basic")
+striga = Member("Striga", "the Monster", "pro")
 
 member_repository.save(geralt)
 member_repository.save(ciri)

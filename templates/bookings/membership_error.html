@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>You need a PRO membership to sign up for this class</p>
+<p>Would you like to upgrade?</p>
+<form action="members/{{ member.id }}/edit">
+    <input type="submit" value="Edit"/>
+</form>
+
+
+<a href="/bookings">Back to Bookings</a>
+
+
+{% endblock %}
