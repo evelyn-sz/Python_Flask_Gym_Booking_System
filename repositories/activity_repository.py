@@ -52,7 +52,7 @@ def members(activity):
     results = run_sql(sql, values)
 
     for row in results:
-        member = Member(row['first_name'], row['last_name'], row['id'])
+        member = Member(row['first_name'], row['last_name'], row['membership_type'], row['id'])
         members.append(member)
     return members
 

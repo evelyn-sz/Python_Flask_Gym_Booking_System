@@ -66,7 +66,7 @@ def member(booking):
     sql = "SELECT * FROM members WHERE id = %s"
     values = [booking.member.id]
     results = run_sql(sql, values)[0]
-    member = Member(results['first_name'], results['last_name'], results['id'])
+    member = Member(results['first_name'], results['last_name'], results['membership_type'], results['id'])
     return member
 
 def activity(booking):
