@@ -6,13 +6,26 @@ import repositories.activity_repository as activity_repository
 import repositories.member_repository as member_repository
 import pdb
 
+# def save(booking):
+#     sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
+#     values = (booking.member.id, booking.activity.id)
+#     results = run_sql(sql, values)
+#     id = results[0]['id']
+#     booking.id = id
+#     return booking
+
 def save(booking):
-    sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
-    values = (booking.member.id, booking.activity.id)
-    results = run_sql(sql, values)
-    id = results[0]['id']
-    booking.id = id
+
+    if number_of_participants(booking.activity_id) < booking.activity.capacity:
+
+        sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
+        values = (booking.member.id, booking.activity.id)
+        results = run_sql(sql, values)
+        id = results[0]['id']
+        booking.id = id
     return booking
+
+
 
 def select_all():
     bookings = []
@@ -64,3 +77,14 @@ def activity(booking):
     results = run_sql(sql, values)[0]
     activity = Activity(results['name'], results['venue'], results['category'], results['capacity'], results['finished'], results['id'])
     return activity
+
+def number_of_participants(activity_id):
+    participants = []
+    sql = "SELECT * FROM bookings WHERE activity_id = %s"
+    results = run_sql(sql)
+
+    for row in results:
+        booking = Booking(row['member_id'], row['activity_id'], row['id'])
+        participants.append(booking)
+    return len(participants)
+

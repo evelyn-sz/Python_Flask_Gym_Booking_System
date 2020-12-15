@@ -65,3 +65,4 @@ def show_upcoming_activities():
         activity = Activity(row['name'], row['venue'], row['category'], row['capacity'], row['finished'], row['id'])
         upcoming.append(activity)
     return upcoming
+
