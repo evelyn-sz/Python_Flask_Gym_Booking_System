@@ -27,7 +27,8 @@ def create_activity():
     category = request.form["category"]
     capacity = request.form["capacity"]
     finished = request.form["finished"]
-    new_activity = Activity(name, venue, category, capacity, finished)
+    offpeak = request.form["offpeak"]
+    new_activity = Activity(name, venue, category, capacity, finished, offpeak)
     activity_repository.save(new_activity)
     return redirect("/activities")
 
@@ -43,7 +44,8 @@ def update_activity(id):
     category = request.form["category"]
     capacity = request.form["capacity"]
     finished = request.form["finished"]
-    activity = Activity(name, venue, category, capacity, finished, id)
+    offpeak = request.form["offpeak"]
+    activity = Activity(name, venue, category, capacity, finished, offpeak, id)
     activity_repository.update(activity)
     return redirect("/activities")
 

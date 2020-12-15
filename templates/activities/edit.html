@@ -14,8 +14,15 @@
         <input type="text" id="category" name="category" value="{{ activity.category }}">
         <label for="capacity">Capacity:</label>
         <input type="text" id="capacity" name="capacity" value="{{ activity.capacity }}">
-        <label for="finished">Finished?</label>
-        <input type="text" id="finished" name="finished" value="{{ activity.finished }}">
+        <label for="finished">Future / Past Event</label>
+        <select name="finished" id="offpeak">
+            <option value=False>Future</option>
+            <option value=True>Past</option>
+        </select>
+        <label for="offpeak">Offpeak / Peak</label>
+        <select name="offpeak" id="offpeak">
+            <option value=True>Offpeak</option>
+            <option value=False>Peak</option>
         <input type="submit">
     </div>
 </form>

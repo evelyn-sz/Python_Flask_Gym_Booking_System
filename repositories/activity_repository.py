@@ -3,8 +3,8 @@ from models.activity import Activity
 from models.member import Member
 
 def save(activity):
-    sql = "INSERT INTO activities (name, venue, category, capacity, finished) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [activity.name, activity.venue, activity.category, activity.capacity, activity.finished]
+    sql = "INSERT INTO activities (name, venue, category, capacity, finished, offpeak) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [activity.name, activity.venue, activity.category, activity.capacity, activity.finished, activity.offpeak]
     results = run_sql(sql, values)
     id = results[0]['id']
     activity.id = id
@@ -17,7 +17,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        activity = Activity(row['name'], row['venue'], row['category'], row['capacity'], row['finished'], row['id'])
+        activity = Activity(row['name'], row['venue'], row['category'], row['capacity'], row['finished'], row['offpeak'], row['id'])
         activities.append(activity)
     return activities
 
@@ -28,7 +28,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        activity = Activity(result['name'], result['venue'], result['category'], result['capacity'], result['finished'], result['id'])
+        activity = Activity(result['name'], result['venue'], result['category'], result['capacity'], result['finished'], result['offpeak'], result['id'])
     return activity
 
 def delete_all():
@@ -41,8 +41,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(activity):
-    sql = "UPDATE activities SET (name, venue, category, capacity, finished) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [activity.name, activity.venue, activity.category, activity.capacity, activity.finished, activity.id]
+    sql = "UPDATE activities SET (name, venue, category, capacity, finished, offpeak) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [activity.name, activity.venue, activity.category, activity.capacity, activity.finished, activity.offpeak, activity.id]
     run_sql(sql, values)
 
 def members(activity):
@@ -62,7 +62,7 @@ def show_upcoming_activities():
     results = run_sql(sql)
 
     for row in results:
-        activity = Activity(row['name'], row['venue'], row['category'], row['capacity'], row['finished'], row['id'])
+        activity = Activity(row['name'], row['venue'], row['category'], row['capacity'], row['finished'], row['offpeak'], row['id'])
         upcoming.append(activity)
     return upcoming
 

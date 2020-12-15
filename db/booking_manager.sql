@@ -15,7 +15,8 @@ CREATE TABLE activities (
     venue VARCHAR(255),
     category VARCHAR(255),
     capacity INT,
-    finished BOOLEAN
+    finished BOOLEAN,
+    offpeak BOOLEAN
 );
 
 CREATE TABLE bookings (

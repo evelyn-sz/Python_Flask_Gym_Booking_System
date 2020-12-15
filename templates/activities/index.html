@@ -14,6 +14,8 @@
         <th>Capacity</th>
         <th></th>
         <th>Finished?</th>
+        <th></th>
+        <th>Offpeak?</th>
     </tr>
     {% for activity in activities %}
     <tr>
@@ -26,8 +28,9 @@
         <td>{{ activity.capacity }}</td>
         <td></td>
         <td>{{ activity.finished }}</td>
+        <td></td>
+        <td>{{ activity.offpeak }}</td>
         <td>
-            <!-- <a href="activities/{{ activity.id }}/edit"></a> -->
             <form action="activities/{{ activity.id }}/edit">
                 <input type="submit" value="Edit"/>
             </form>

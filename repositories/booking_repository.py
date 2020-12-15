@@ -73,7 +73,7 @@ def activity(booking):
     sql = "SELECT * FROM activities WHERE id = %s"
     values = [booking.activity.id]
     results = run_sql(sql, values)[0]
-    activity = Activity(results['name'], results['venue'], results['category'], results['capacity'], results['finished'], results['id'])
+    activity = Activity(results['name'], results['venue'], results['category'], results['capacity'], results['finished'], results['offpeak'], results['id'])
     return activity
 
 def number_of_participants(activity):
