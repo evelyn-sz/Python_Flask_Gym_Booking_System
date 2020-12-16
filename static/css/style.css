@@ -25,12 +25,15 @@ h1, h2, h3, h4, h5 ,h6, p {
     border-color:rgb(44, 41, 38);
     margin: 3px;
     width: 250px;
+    background: rgba(255, 248, 234, 0.4);
+
 }
 
 .boxes {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
     
 }
 
@@ -117,6 +120,19 @@ a:link, a:visited, a:hover, a:focus, a:active{
 
 .flex--row {
     flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 3px;
+}
+
+select {
+    margin: 3px;
 }
 
 #content {
