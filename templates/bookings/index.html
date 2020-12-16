@@ -3,8 +3,9 @@
 {% block content %}
 <h2>Bookings</h2>
 
+<div class="boxes">
 {% for booking in bookings %}
-    <section>
+    <section class="blocks">
         <p><a href="/bookings/{{ booking.id }}">{{ booking.member.full_name() }} - {{ booking.activity.name }},  {{ booking.activity.category }}</a></p>
         <p>Venue: {{ booking.activity.venue }}</p>
         <form action="/bookings/{{ booking.id }}/edit" method="POST">
@@ -14,7 +15,8 @@
         </form>
     </section>  
 {% endfor %}
-<nav>
+</div>
+<nav class="control">
     <ul>
         <li><a href="/bookings/new">Add new booking</a>
         </li>

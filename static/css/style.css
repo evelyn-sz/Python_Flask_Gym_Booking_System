@@ -3,10 +3,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* background-size: contain; */
     display: flex;
 }
 
+
+div {
+    display: flex;
+    flex-direction: column;
+}
 
 h1, h2, h3, h4, h5 ,h6, p {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -16,40 +20,67 @@ h1, h2, h3, h4, h5 ,h6, p {
     text-shadow: 1px 1px 3px rgb(44, 41, 38);
 }
 
+.blocks {
+    border: 2px solid;
+    border-color:rgb(44, 41, 38);
+    margin: 3px;
+    width: 250px;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+ul.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 p {
     color: rgb(32, 31, 26);
 }
 
-nav {
-    color: rgb(32, 31, 26);
-    padding: 25px;
-    margin: 0px;
-    padding-right: 25 px;
-    background: rgba(255, 248, 234, 0.4);
-    text-shadow: 1px 1px 3px rgb(44, 41, 38);
-}
-
-menu.li {
-    padding: 10px;
-}
 
 footer {
     background: rgba(255, 248, 234, 0.4);
     display: flex;
     justify-content: flex-start;
-
+    
 }
 
 ul {
     list-style-type: none;
     color: rgb(32, 31, 26);
     text-shadow: 1px 1px 3px rgb(44, 41, 38);
-    flex-flow: row;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 3px;
+    padding: 5px;
 
+}
+
+nav {
+    color: rgb(32, 31, 26);
+    padding: 3px;
+    margin: 0px;
+    background: rgba(255, 248, 234, 0.4);
+    text-shadow: 1px 1px 3px rgb(44, 41, 38);
+}
+
+nav.header {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
 }
 
 nav ul li {
     text-transform: uppercase;
+    margin: 3px;
 }
 
 table {
@@ -58,8 +89,20 @@ table {
 
 }
 main {
-    padding: 25px
+    padding: 25px;
 }
+
+.control {
+    border: 3px solid;
+    border-color:rgb(44, 41, 38);
+    margin: 2px;
+    padding: 4px;
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 a:link, a:visited, a:hover, a:focus, a:active{
     color:rgb(32, 31, 26);
     text-decoration: none;
@@ -77,8 +120,10 @@ a:link, a:visited, a:hover, a:focus, a:active{
 }
 
 #content {
-    border: 1px solid #254E70;
     padding: 15px;
     background: rgba(255, 248, 234, 0.4);
-
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
