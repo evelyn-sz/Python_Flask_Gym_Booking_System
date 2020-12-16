@@ -32,13 +32,22 @@ def create_booking():
     activity_id = request.form["activity_id"]
     activity = activity_repository.select(activity_id)
     new_booking = Booking(member, activity)
-    booking_repository.save(new_booking)
-    if booking_repository.save(new_booking) == False:
-        return render_template("/bookings/membership_error.html")
-    elif booking_repository.save(new_booking) == None:
-        return render_template("/bookings/full.html")
-    elif booking_repository.save(new_booking) is not None:
+    if booking_repository.save(new_booking) is not None:
+        # booking_repository.save(new_booking)
         return redirect("/bookings")
+    else:
+        return render_template("/bookings/full.html")
+
+
+
+    # if booking_repository.save(new_booking) == False:
+    #     return render_template("/bookings/membership_error.html")
+    #     pdb.set_trace()
+    # elif booking_repository.save(new_booking) == None:
+    #     return render_template("/bookings/full.html")
+    # else:
+    #     booking_repository.save(new_booking) is not None:
+    #     return redirect("/bookings")
 
 
     # if booking_repository.save(new_booking) is not None:
