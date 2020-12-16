@@ -26,6 +26,9 @@ h1, h2, h3, h4, h5 ,h6, p {
     margin: 3px;
     width: 250px;
     background: rgba(255, 248, 234, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -33,8 +36,11 @@ h1, h2, h3, h4, h5 ,h6, p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+}
 
-    
+input {
+    width: 110px;
 }
 
 ul.menu {
