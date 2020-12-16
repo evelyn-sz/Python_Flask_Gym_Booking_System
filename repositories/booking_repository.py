@@ -6,13 +6,6 @@ import repositories.activity_repository as activity_repository
 import repositories.member_repository as member_repository
 import pdb
 
-# def save(booking):
-#     sql = "INSERT INTO bookings (member_id, activity_id) VALUES (%s, %s) RETURNING id"
-#     values = (booking.member.id, booking.activity.id)
-#     results = run_sql(sql, values)
-#     id = results[0]['id']
-#     booking.id = id
-#     return booking
 
 def save(booking):
     if number_of_participants(booking.activity) < booking.activity.capacity:
@@ -39,7 +32,7 @@ def save(booking):
 #             results = run_sql(sql, values)
 #             id = results[0]['id']
 #             booking.id = id
-#             pdb.set_trace()
+#             # pdb.set_trace()
 #             return booking
 #     else:
 #         return None

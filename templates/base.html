@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
-        <title> Gym Bookings</title>
-        <link href="https://fonts.google.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
-
+        <title> The Continent Gym</title>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <main>
-            <nav>
-                <ul class="menu">
-                    <li><a href="/">Home</a></li>
-                    <li> 
-                        <a href="/bookings">Bookings</a>
-                    </li>
-                    <li>
-                        <a href="/members">Members</a>
-                    </li>
-                    <li>
-                        <a href="/activities">Activities</a>
-                    </li>
-                </ul>
-            </nav>
+        <nav>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li> 
+                    <a href="/bookings">Bookings</a>
+                </li>
+                <li>
+                    <a href="/members">Members</a>
+                </li>
+                <li>
+                    <a href="/activities">Activities</a>
+                </li>
+            </ul>
+        </nav>
+        <main class="flex flex--row">
             <section id="content">
             {% block content %}
             {% endblock %}
             </section>
+            <br>
         </main>
     </body>
 </html>

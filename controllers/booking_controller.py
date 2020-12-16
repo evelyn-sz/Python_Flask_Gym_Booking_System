@@ -33,21 +33,27 @@ def create_booking():
     activity = activity_repository.select(activity_id)
     new_booking = Booking(member, activity)
     if booking_repository.save(new_booking) is not None:
-        # booking_repository.save(new_booking)
         return redirect("/bookings")
     else:
         return render_template("/bookings/full.html")
 
 
+#below, code for finishing second extension
 
-    # if booking_repository.save(new_booking) == False:
-    #     return render_template("/bookings/membership_error.html")
-    #     pdb.set_trace()
-    # elif booking_repository.save(new_booking) == None:
-    #     return render_template("/bookings/full.html")
-    # else:
-    #     booking_repository.save(new_booking) is not None:
-    #     return redirect("/bookings")
+# @bookings_blueprint.route("/bookings", methods=["POST"])
+# def create_booking():
+#     member_id = request.form["member_id"]
+#     member = member_repository.select(member_id)
+#     activity_id = request.form["activity_id"]
+#     activity = activity_repository.select(activity_id)
+#     new_booking = Booking(member, activity)
+#     if booking_repository.save(new_booking) == False:
+#         return render_template("/bookings/membership_error.html")
+#         # pdb.set_trace()
+#     elif booking_repository.save(new_booking) == None:
+#         return render_template("/bookings/full.html")
+#     elif booking_repository.save(new_booking) is not None:
+#         return redirect("/bookings")
 
 
     # if booking_repository.save(new_booking) is not None:
