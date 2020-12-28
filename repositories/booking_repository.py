@@ -44,9 +44,9 @@ def save(booking):
         #membership == basic AND class == offpeak:
             # sign up
         #else:
-            # don't sign up
+            # don't sign up because unsuitable membership
 # else:
-    #return None
+    #don't sign up because class is full
 
 
 def select_all():
