@@ -53,3 +53,8 @@ def update_activity(id):
 def show_upcoming():
     upcoming = activity_repository.show_upcoming_activities()
     return render_template("activities/upcoming.html", upcoming=upcoming)
+
+@activities_blueprint.route("/activities/<id>/delete", methods=["POST"])
+def delete_activity(id):
+    activity_repository.delete(id)
+    return redirect("/activities")
