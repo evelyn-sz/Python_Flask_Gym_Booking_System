@@ -4,6 +4,7 @@ from models.member import Member
 from models.booking import Booking 
 import repositories.activity_repository as activity_repository
 import repositories.member_repository as member_repository
+import repositories.booking_repository as booking_repository
 import pdb
 
 
@@ -72,19 +73,6 @@ def select(id):
         booking = Booking(member, activity, result["id"])
     return booking
 
-def delete_all():
-    sql = "DELETE FROM bookings"
-    run_sql(sql)
-
-def delete(id):
-    sql = "DELETE FROM bookings WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
-
-def update(booking):
-    sql = "UPDATE bookings SET (member_id, activity_id) = (%s, %s) WHERE id = %s"
-    values = [booking.member.id, booking.activity.id, booking.id]
-    run_sql(sql, values)
 
 def member(booking):
     sql = "SELECT * FROM members WHERE id = %s"
@@ -105,3 +93,17 @@ def number_of_participants(activity):
     values = [activity.id]
     results = run_sql(sql, values)[0]
     return results["count"]
+    
+def delete_all():
+    sql = "DELETE FROM bookings"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM bookings WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+def update(booking):
+    sql = "UPDATE bookings SET (member_id, activity_id) = (%s, %s) WHERE id = %s"
+    values = [booking.member.id, booking.activity.id, booking.id]
+    run_sql(sql, values)

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Edit booking</h3>
+<p>Booking ID: {{ booking.id }}</p>
+<p>Member: {{ booking.member.full_name() }} </p>
+<p>Activity: {{ booking.activity.name }} </p>
+<p>Category: {{ booking.activity.category }} </p>
+<p>Venue: {{ booking.activity.venue }} </p>
+
+<form action="/bookings/{{ booking.id }}" method="POST">
+    <div>
+        <label for="member">Select Member:</label>
+        <select name="member_id" id="member">
+            {% for member in members %}
+            <option value="{{ member.id }}">{{ member.full_name() }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="activity">Choose activity:</label>
+        <select name="activity_id" id="activity">
+            {% for activity in activities %}
+            <option value="{{ activity.id }}">{{ activity.name }}</option>
+            {% endfor %}
+        </select>
+        <div>
+            <input type="submit">
+        </div>
+    </div>
+</form>
+
+{% endblock %}

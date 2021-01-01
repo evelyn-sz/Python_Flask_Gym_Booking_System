@@ -9,8 +9,9 @@
         <p><a href="/bookings/{{ booking.id }}">{{ booking.member.full_name() }}</p>
         <p>{{ booking.activity.name }},  {{ booking.activity.category }}</a></p>
         <p>Venue: {{ booking.activity.venue }}</p>
-        <form action="/bookings/{{ booking.id }}/edit" method="POST">
+        <form action="/bookings/{{ booking.id }}/edit">
             <input type="submit" value="Edit"/>
+        </form>
         <form action="/bookings/{{ booking.id }}/delete" method="POST">
             <input class="btn btn--danger" type="submit" value="Delete"/>
         </form>

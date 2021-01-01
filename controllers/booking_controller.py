@@ -37,6 +37,27 @@ def create_booking():
     else:
         return render_template("/bookings/full.html")
 
+@bookings_blueprint.route("/bookings/<id>/edit")
+def edit_booking(id):
+    booking = booking_repository.select(id)
+    members = member_repository.select_all()
+    activities = activity_repository.select_all()
+    return render_template("bookings/edit.html", booking=booking, members=members, activities=activities)
+
+@bookings_blueprint.route("/bookings/<id>", methods=["POST"])
+def update_booking(id):
+    member_id = request.form["member_id"]
+    activity_id = request.form["activity_id"]
+    member = member_repository.select(member_id)
+    activity = activity_repository.select(activity_id)
+    booking = Booking(member, activity, id)
+    booking_repository.update(booking)
+    return redirect("/bookings")
+
+@bookings_blueprint.route("/bookings/<id>/delete", methods=["POST"])
+def delete_booking(id):
+    booking_repository.delete(id)
+    return redirect("/bookings")
 
 #below, code for finishing second extension
 
